@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tenmalexis — Classement HDV sur 30 jours</title>
+<meta name="description" content="Tous les bilans mensuels Tenmalexis des ventes HDV sur 30 jours : Dofus, Prysmaradites, Familiers, Montiliers et équipements.">
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link href="https://fonts.bunny.net/css?family=rajdhani:500,600,700|dm-sans:400,500,600,700|exo-2:400,500,600" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0c10;
+  --bg2:#0d1017;
+  --card:#12151c;
+  --card2:#171b24;
+  --border:#20242e;
+  --border2:#2d3442;
+  --gold:#f4b400;
+  --gold2:#ffd54f;
+  --gold-dim:#8a6a10;
+  --text:#e8e9ed;
+  --muted:#8b909c;
+  --green:#39d98a;
+  --youtube:#ff5c5c;
+  --twitch:#b794ff;
+  --tiktok:#4dedea;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 50% -10%, rgba(244,180,0,.10), transparent 34%),
+    var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  line-height:1.5;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.25;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+header{
+  position:sticky;top:0;z-index:20;
+  border-bottom:1px solid var(--border);
+  padding:18px clamp(18px,4vw,54px);
+  display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  background:rgba(10,12,16,.92);backdrop-filter:blur(10px);
+}
+.brand{display:flex;align-items:center;gap:14px}
+.mark{width:52px;height:52px;border:1.5px solid var(--gold);border-radius:10px;display:flex;align-items:center;justify-content:center;padding:5px;overflow:hidden;background:rgba(244,180,0,.05)}
+.mark img{width:100%;height:100%;object-fit:contain}
+.mark.secondary{width:40px;height:40px;opacity:.85}
+.brand-text{display:flex;flex-direction:column;align-items:center;text-align:center}
+.brand-name{font-family:'Rajdhani',sans-serif;font-size:2rem;font-weight:700;line-height:1.05}
+.brand-tagline{font-family:'Exo 2',sans-serif;color:var(--gold);font-size:.98rem;font-weight:500;margin-top:-2px}
+.social{display:flex;gap:9px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.social-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:6px 14px 8px;border-radius:14px;font-family:'Exo 2',sans-serif;font-weight:600;font-size:.84rem;transition:.15s ease}
+.social-item:hover{transform:translateY(-1px)}
+.platform-label{font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;opacity:.76}
+.social-item.ankama{color:var(--gold);background:rgba(244,180,0,.10);border:1px solid rgba(244,180,0,.45);box-shadow:0 0 12px rgba(244,180,0,.18);padding-top:11px;padding-bottom:11px}
+.social-item.youtube{color:var(--youtube);background:rgba(255,92,92,.10);border:1px solid rgba(255,92,92,.42);box-shadow:0 0 12px rgba(255,92,92,.15)}
+.social-item.twitch{color:var(--twitch);background:rgba(145,70,255,.12);border:1px solid rgba(145,70,255,.5);box-shadow:0 0 12px rgba(145,70,255,.18)}
+.social-item.tiktok{color:var(--tiktok);background:rgba(37,244,238,.08);border:1px solid rgba(37,244,238,.42);box-shadow:0 0 12px rgba(37,244,238,.15)}
+
+main{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:clamp(42px,6vw,76px) clamp(18px,5vw,50px) 80px}
+.hero{text-align:center;display:flex;flex-direction:column;align-items:center;margin-bottom:34px}
+.eyebrow{font-family:'Exo 2',sans-serif;color:var(--gold);font-size:1.05rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px}
+h1{font-family:'Rajdhani',sans-serif;font-size:clamp(2.4rem,6vw,4.4rem);line-height:.98;letter-spacing:-.02em}
+h1 span{color:var(--gold)}
+.hero p{color:var(--muted);max-width:760px;margin-top:17px;font-size:1rem}
+.categories{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{font-family:'Exo 2',sans-serif;font-size:.74rem;color:#cfd3dc;border:1px solid var(--border2);background:rgba(255,255,255,.025);padding:6px 10px;border-radius:999px}
+
+.toolbar{display:flex;align-items:end;justify-content:space-between;gap:18px;margin:30px 0 14px}
+.toolbar-title{font-family:'Rajdhani',sans-serif;font-size:1.7rem;font-weight:700}
+.toolbar-sub{font-size:.82rem;color:var(--muted);margin-top:2px}
+.count{font-family:'Exo 2',sans-serif;color:var(--gold);font-size:.8rem;border:1px solid rgba(244,180,0,.3);background:rgba(244,180,0,.06);padding:7px 10px;border-radius:10px}
+
+.timeline{display:grid;gap:12px}
+.month-card{border:1px solid var(--border);border-radius:14px;background:linear-gradient(180deg,var(--card),#10131a);overflow:hidden;transition:border-color .15s ease,transform .15s ease}
+.month-card:hover{border-color:#343b49}
+.month-card.open{border-color:rgba(244,180,0,.55);box-shadow:0 10px 32px rgba(0,0,0,.23),0 0 0 1px rgba(244,180,0,.05) inset}
+.month-toggle{width:100%;border:0;background:none;color:inherit;padding:20px 21px;display:flex;align-items:center;justify-content:space-between;gap:18px;cursor:pointer;text-align:left}
+.month-main{display:flex;align-items:center;gap:18px;min-width:0}
+.month-index{
+  width:48px;
+  height:48px;
+  border:1px solid rgba(244,180,0,.34);
+  background:
+    radial-gradient(circle at 50% 38%, rgba(244,180,0,.16), transparent 68%),
+    rgba(244,180,0,.055);
+  border-radius:11px;
+  display:grid;
+  place-items:center;
+  flex:0 0 auto;
+  box-shadow:
+    inset 0 0 14px rgba(244,180,0,.04),
+    0 0 0 1px rgba(255,255,255,.01);
+  overflow:hidden;
+}
+.month-copy{display:flex;flex-direction:column;gap:7px;min-width:0}
+
+.month-logo img{
+  width:38px;
+  height:38px;
+  object-fit:contain;
+  filter:drop-shadow(0 0 7px rgba(244,180,0,.20));
+  transition:transform .16s ease,filter .16s ease;
+}
+.month-card:hover .month-logo img,
+.month-card.open .month-logo img{
+  transform:scale(1.06);
+  filter:drop-shadow(0 0 10px rgba(244,180,0,.32));
+}
+
+.month-name{display:block;font-family:'Rajdhani',sans-serif;font-size:1.55rem;font-weight:700;line-height:1}
+.month-meta{display:block;font-size:.78rem;color:var(--muted);line-height:1.3}
+.chevron{width:34px;height:34px;border-radius:9px;border:1px solid var(--border2);display:grid;place-items:center;color:var(--gold);font-size:1rem;transition:transform .18s ease,border-color .18s ease,background .18s ease;flex:0 0 auto}
+.month-card.open .chevron{transform:rotate(180deg);border-color:var(--gold-dim);background:rgba(244,180,0,.07)}
+.month-content{display:grid;grid-template-rows:0fr;transition:grid-template-rows .22s ease}
+.month-card.open .month-content{grid-template-rows:1fr}
+.month-inner{overflow:hidden}
+.month-actions{
+  border-top:1px solid var(--border);
+  padding:18px 21px 21px;
+  display:flex;
+  flex-direction:column;
+  gap:11px;
+  background:rgba(0,0,0,.11)
+}
+.action{
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  min-height:78px;
+  padding:14px 18px 14px 16px;
+  border-radius:12px;
+  border:1px solid var(--border2);
+  background:linear-gradient(90deg,rgba(255,255,255,.018),rgba(255,255,255,.008));
+  transition:.16s ease;
+}
+.action::before{
+  content:"";
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:3px;
+  opacity:.9;
+}
+.action.recap::before{background:var(--gold)}
+.action.video::before{background:var(--youtube)}
+.action.recap{border-color:rgba(244,180,0,.20)}
+.action.video{border-color:rgba(255,92,92,.20)}
+.action:hover{transform:translateY(-1px);background:rgba(255,255,255,.035)}
+.action.recap:hover{border-color:rgba(244,180,0,.48);box-shadow:0 0 20px rgba(244,180,0,.07)}
+.action.video:hover{border-color:rgba(255,92,92,.46);box-shadow:0 0 20px rgba(255,92,92,.07)}
+.action-left{display:flex;align-items:center;gap:14px;min-width:0}
+.action-copy{display:flex;flex-direction:column;gap:5px}
+.action-icon{
+  width:46px;
+  height:46px;
+  border-radius:11px;
+  display:grid;
+  place-items:center;
+  flex:0 0 auto;
+  position:relative;
+  overflow:hidden;
+}
+.action.recap .action-icon{
+  background:radial-gradient(circle at 50% 35%,rgba(244,180,0,.18),transparent 68%),rgba(244,180,0,.07);
+  border:1px solid rgba(244,180,0,.32);
+  box-shadow:inset 0 0 14px rgba(244,180,0,.05);
+}
+.recap-logo img{
+  width:34px;
+  height:34px;
+  object-fit:contain;
+  filter:drop-shadow(0 0 7px rgba(244,180,0,.20));
+  transition:transform .16s ease,filter .16s ease;
+}
+.action.recap:hover .recap-logo img{
+  transform:scale(1.08);
+  filter:drop-shadow(0 0 10px rgba(244,180,0,.34));
+}
+.youtube-logo{
+  background:radial-gradient(circle at 35% 25%,rgba(255,255,255,.10),transparent 45%),linear-gradient(145deg,rgba(255,78,78,.26),rgba(95,20,25,.20));
+  border:1px solid rgba(255,92,92,.38);
+  box-shadow:inset 0 0 18px rgba(255,92,92,.08),0 0 0 1px rgba(255,255,255,.015);
+}
+.youtube-logo::before{
+  content:"";
+  width:29px;
+  height:20px;
+  border-radius:7px;
+  background:linear-gradient(135deg,#ff4747,#d90018);
+  box-shadow:0 5px 14px rgba(217,0,24,.24),inset 0 1px 0 rgba(255,255,255,.16);
+  position:absolute;
+}
+.yt-play{
+  width:0;
+  height:0;
+  border-top:5px solid transparent;
+  border-bottom:5px solid transparent;
+  border-left:8px solid #fff;
+  margin-left:2px;
+  position:relative;
+  z-index:2;
+  filter:drop-shadow(0 1px 1px rgba(0,0,0,.25));
+  transition:transform .16s ease;
+}
+.action.video:hover .youtube-logo{
+  border-color:rgba(255,92,92,.62);
+  box-shadow:inset 0 0 20px rgba(255,92,92,.12),0 0 18px rgba(255,52,52,.10);
+}
+.action.video:hover .yt-play{transform:scale(1.12)}
+.action-title{display:block;font-family:'Exo 2',sans-serif;font-size:.96rem;font-weight:700;line-height:1.2}
+.action-sub{display:block;font-size:.74rem;color:var(--muted);line-height:1.3}
+.action-arrow{
+  width:34px;height:34px;border-radius:9px;border:1px solid var(--border2);
+  display:grid;place-items:center;color:var(--muted);font-size:1.05rem;flex:0 0 auto;
+  transition:.15s ease;
+}
+.action.recap:hover .action-arrow{color:var(--gold);border-color:rgba(244,180,0,.38);background:rgba(244,180,0,.06)}
+.action.video:hover .action-arrow{color:var(--youtube);border-color:rgba(255,92,92,.38);background:rgba(255,92,92,.06)}
+
+.info-box{margin-top:18px;border:1px dashed #2f3644;border-radius:12px;padding:16px 18px;color:var(--muted);font-size:.86rem;background:rgba(255,255,255,.015)}
+.info-box strong{color:var(--text)}
+
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:27px clamp(18px,5vw,56px);display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);font-family:'Exo 2',sans-serif;font-size:.82rem}
+
+@media(max-width:850px){
+  header{justify-content:center}.social{justify-content:center}.brand{width:100%;justify-content:center}
+}
+@media(max-width:650px){
+  .month-index{width:44px;height:44px}.month-logo img{width:34px;height:34px}
+  .brand-tagline{font-size:.82rem}.mark.secondary{display:none}.social-item{padding:6px 9px 8px}.month-toggle{padding:17px 15px}.month-actions{padding:14px 15px 17px}.toolbar{align-items:flex-start;flex-direction:column;gap:8px}.month-name{font-size:1.35rem}.month-copy{gap:6px}.action{min-height:72px;padding-right:13px}.action-icon{width:42px;height:42px}.recap-logo img{width:31px;height:31px}
+}
+@media(max-width:440px){
+  .platform-label{display:none}.social-item{font-size:.76rem}.brand-name{font-size:1.7rem}.mark{width:46px;height:46px}.hero p{font-size:.92rem}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <div class="mark"><img src="https://api.dofusdb.fr/img/items/100056.png" alt="Dofus"></div>
+    <div class="brand-text">
+      <span class="brand-name">Tenmalexis</span>
+      <span class="brand-tagline">L'art de faire des kamas intelligemment</span>
+    </div>
+    <div class="mark secondary"><img src="https://api.dofusdb.fr/img/items/148036.png" alt=""></div>
+  </div>
+  <nav class="social" aria-label="Réseaux Tenmalexis">
+    <a class="social-item ankama" href="https://store.ankama.com/fr?code=TENMA" target="_blank" rel="noopener">Code Créateur TENMA</a>
+    <a class="social-item youtube" href="https://www.youtube.com/@Tenmalexis" target="_blank" rel="noopener"><span class="platform-label">YouTube</span><span>▶ @Tenmalexis</span></a>
+    <a class="social-item twitch" href="https://www.twitch.tv/tenmalexis" target="_blank" rel="noopener"><span class="platform-label">Twitch</span><span>▶ @tenmalexis</span></a>
+    <a class="social-item tiktok" href="https://www.tiktok.com/@tenmalexis" target="_blank" rel="noopener"><span class="platform-label">TikTok</span><span>♪ @tenmalexis</span></a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="eyebrow">📈 Observatoire HDV • 30 jours</div>
+    <h1>Classement HDV <span>par catégorie</span></h1>
+    <p>Retrouve tous mes bilans mensuels des objets les plus vendus en Hôtel de Vente. Clique sur un mois pour ouvrir le récap complet et la vidéo YouTube associée.</p>
+    <div class="categories" aria-label="Catégories suivies">
+      <span class="chip">Dofus</span><span class="chip">Prysmaradites</span><span class="chip">Familiers</span><span class="chip">Montiliers</span><span class="chip">Équipements Sagesse</span><span class="chip">Équipements Drop</span><span class="chip">Équipements Classiques</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="toolbar">
+      <div><div class="toolbar-title">Historique des bilans</div><div class="toolbar-sub">Du plus récent au plus ancien • données regroupées sur 30 jours</div></div>
+      <div class="count" id="count"></div>
+    </div>
+    <div class="timeline" id="timeline"></div>
+  </section>
+</main>
+
+<footer>Tenmalexis • Bilans HDV DOFUS • Classement des ventes sur 30 jours</footer>
+
+<script>
+const REPORTS = [
+  { month:'Août', year:2026, recap:'https://tenmalexis.github.io/ventes-items-aout/', video:'https://www.youtube.com/watch?v=9gbuZ7aQ6hg' },
+  { month:'Juillet', year:2026, recap:'https://tenmalexis.github.io/ventes-items-juillet/', video:'https://www.youtube.com/watch?v=TV0Fen83g84' },
+  { month:'Juin', year:2026, recap:'https://tenmalexis.github.io/ventes-items-juin/', video:'https://www.youtube.com/watch?v=ry1jsE9fvRU' },
+  { month:'Mai', year:2026, recap:'https://tenmalexis.github.io/ventes-items-mai/', video:'https://www.youtube.com/watch?v=vW56ePNguMw' },
+  { month:'Avril', year:2026, recap:'https://tenmalexis.github.io/ventes-items-avril/', video:'https://www.youtube.com/watch?v=BJ4c54vIAC8' }
+];
+
+const timeline = document.getElementById('timeline');
+document.getElementById('count').textContent = `${REPORTS.length} bilans disponibles`;
+
+REPORTS.forEach((r, i) => {
+  const article = document.createElement('article');
+  article.className = 'month-card' + (i === 0 ? ' open' : '');
+  article.innerHTML = `
+    <button class="month-toggle" type="button" aria-expanded="${i===0}">
+      <span class="month-main">
+        <span class="month-index month-logo"><img src="https://api.dofusdb.fr/img/items/148036.png" alt=""></span>
+        <span class="month-copy"><span class="month-name">${r.month} ${r.year}</span><span class="month-meta">Classement HDV • 7 catégories • période de 30 jours</span></span>
+      </span>
+      <span class="chevron">⌄</span>
+    </button>
+    <div class="month-content"><div class="month-inner"><div class="month-actions">
+      <a class="action recap" href="${r.recap}" target="_blank" rel="noopener">
+        <span class="action-left"><span class="action-icon recap-logo"><img src="https://api.dofusdb.fr/img/items/148036.png" alt="Logo récap HDV"></span><span class="action-copy"><span class="action-title">Voir le récap complet</span><span class="action-sub">Classements, volumes et données du mois</span></span></span><span class="action-arrow">→</span>
+      </a>
+      <a class="action video" href="${r.video}" target="_blank" rel="noopener">
+        <span class="action-left"><span class="action-icon youtube-logo" aria-hidden="true"><span class="yt-play"></span></span><span class="action-copy"><span class="action-title">Voir la vidéo YouTube</span><span class="action-sub">Mon analyse complète du classement du mois</span></span></span><span class="action-arrow">→</span>
+      </a>
+    </div></div></div>`;
+  const btn = article.querySelector('.month-toggle');
+  btn.addEventListener('click', () => {
+    const willOpen = !article.classList.contains('open');
+    document.querySelectorAll('.month-card').forEach(card => {
+      card.classList.remove('open');
+      card.querySelector('.month-toggle').setAttribute('aria-expanded','false');
+    });
+    if(willOpen){article.classList.add('open');btn.setAttribute('aria-expanded','true');}
+  });
+  timeline.appendChild(article);
+});
+</script>
+</body>
+</html>
